@@ -1,18 +1,18 @@
 ﻿(function() {
     "use strict";
 
-    angular.module("app").directive("hoverClass", function() {
+    angular.module("app").directive("gaHoverClass", function() {
         return {
             restrict: "A",
             scope: {
-                hoverClass: "@"
+                gaHoverClass: "@"
             },
             link: function(scope, element) {
                 element.on("mouseenter", function() {
-                    element.addClass(scope.hoverClass);
+                    element.addClass(scope.gaHoverClass);
                 });
                 element.on("mouseleave", function() {
-                    element.removeClass(scope.hoverClass);
+                    element.removeClass(scope.gaHoverClass);
                 });
             }
         };

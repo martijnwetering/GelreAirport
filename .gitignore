@@ -7,7 +7,7 @@
 *.sln.docstates
 
 # Scripts folder
-/Scripts
+Scripts/
 
 # Build results
 [Dd]ebug/

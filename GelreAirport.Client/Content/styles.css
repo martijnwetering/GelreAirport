@@ -5,3 +5,7 @@
 .hover {
     background-color: lightgrey;
 }
+
+.cancel-btn {
+    margin-right: 5px;
+}

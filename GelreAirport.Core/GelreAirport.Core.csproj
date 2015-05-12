@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2EEF6260-0B8F-414C-8A4E-8D1833D5B5C1}</ProjectGuid>
+    <ProjectGuid>{6FAEE607-2654-45F9-967E-1B0AECF09BFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GelreAirport.Data</RootNamespace>
-    <AssemblyName>GelreAirport.Data</AssemblyName>
+    <RootNamespace>GelreAirport.Core</RootNamespace>
+    <AssemblyName>GelreAirport.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,13 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\PassengerFactory.cs" />
-    <Compile Include="Infrastructure\AdoNetContext.cs" />
-    <Compile Include="Infrastructure\ConnectionFactory.cs" />
-    <Compile Include="Infrastructure\PassengerRepository.cs" />
-    <Compile Include="Models\Passenger.cs" />
-    <Compile Include="Models\SearchParams.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

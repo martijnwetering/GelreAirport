@@ -8,11 +8,12 @@ namespace GelreAirport.Data.Models
         public int FlightNumber { get; set; }
         public string Name { get; set; }
         public string Gender { get; set; }
+        public DateTime BirthDate { get; set; }
         public DateTime DepartureDate { get; set; }
 
-        public DateTime CheckInTime { get; set; }
+        public DateTime? CheckInDateTime { get; set; }
         public string Seat { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public DateTime? TimeStamp { get; set; }
     }
 }

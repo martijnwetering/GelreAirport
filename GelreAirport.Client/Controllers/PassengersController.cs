@@ -49,7 +49,7 @@ namespace GelreAirport.Client.Controllers
 
                 List<string> lstOfFields = new List<string>();
 
-                if (fields != null)
+                if (!string.IsNullOrWhiteSpace(fields))
                 {
                     lstOfFields = fields.ToLower().Split(',').ToList();
                 }
@@ -67,9 +67,50 @@ namespace GelreAirport.Client.Controllers
         }
 
         [Route("passenger/{passengerNumber:int}/{flightNumber:int}")]
-        public IHttpActionResult Passenger(int passengerNumber, int flightNumber)
+        [HttpGet]
+        public IHttpActionResult Passenger(int passengerNumber, int flightNumber, string fields = "")
         {
-            return Ok();
+            try
+            {
+                var passenger = _passengerRepo.FindOne(passengerNumber, flightNumber);
+                if (passenger != null)
+                {
+                    List<string> lstOfFields = new List<string>();
+
+                    if (!string.IsNullOrWhiteSpace(fields))
+                    {
+                        lstOfFields = fields.ToLower().Split(',').ToList();
+                    }
+
+                    var passengerResult = _factory.CreateDataShapedObject(passenger, lstOfFields);
+                    return Ok(passengerResult);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+            
+        }
+
+        [Route("passenger/{passengerNumber:int}/{flightNumber:int}/checkin")]
+        [HttpPost]
+        public IHttpActionResult CheckInPassenger(Passenger passenger)
+        {
+            try
+            {
+                _passengerRepo.CheckIn(passenger);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
+            }
         }
     }
 }

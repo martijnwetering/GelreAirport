@@ -42,8 +42,11 @@
   <ItemGroup>
     <Compile Include="Factories\PassengerFactory.cs" />
     <Compile Include="Infrastructure\AdoNetContext.cs" />
+    <Compile Include="Infrastructure\BaggageRepository.cs" />
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\PassengerRepository.cs" />
+    <Compile Include="Infrastructure\Repository.cs" />
+    <Compile Include="Models\BaggageItem.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\SearchParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

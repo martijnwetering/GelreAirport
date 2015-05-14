@@ -2,10 +2,36 @@
     clear: both;
 }
 
+.error {
+    background: indianred;
+    color: white;
+    position: relative;
+    height: 40px;
+}
+
+.error p {
+    color: white;
+    padding: 7px;
+}
+
 .hover {
-    background-color: lightgrey;
+    background-color: lightgrey !important;
+    cursor: pointer;
 }
 
 .cancel-btn {
     margin-right: 5px;
+}
+
+.icon-remove {
+    position: absolute;
+    float: right;
+    margin-top: 6px;
+    right: 15px;
+    color: white;
+}
+
+.icon-remove:hover {
+    text-decoration: none;
+    color: black;
 }

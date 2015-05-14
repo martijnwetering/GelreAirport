@@ -95,13 +95,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\checkIn\checkIn.controller.js" />
+    <Content Include="app\checkIn\checkinPassenger.controller.js" />
+    <Content Include="app\checkIn\checkinPassenger.directive.js" />
+    <Content Include="app\checkIn\main.controller.js" />
     <Content Include="app\checkIn\counters.service.js" />
+    <Content Include="app\checkIn\partials\checkinPassenger.html" />
+    <Content Include="app\checkIn\partials\counters.html" />
+    <Content Include="app\checkIn\partials\search.html" />
+    <Content Include="app\checkIn\partials\searchAndCheckin.html" />
+    <Content Include="app\checkIn\partials\searchResult.html" />
     <Content Include="app\checkIn\passengers.service.js" />
-    <Content Include="app\checkIn\search.controller.js" />
+    <Content Include="app\checkIn\searchAndCheckin.controller.js" />
+    <Content Include="app\checkIn\search.directive.js" />
+    <Content Include="app\checkIn\searchAndCheckin.directive.js" />
+    <Content Include="app\checkIn\searchResult.directive.js" />
+    <Content Include="app\checkIn\selectCounter.directive.js" />
     <Content Include="app\common\hover.directive.js" />
     <Content Include="app\config.route.js" />
-    <Content Include="app\checkIn\checkIn.html" />
+    <Content Include="app\checkIn\main.html" />
     <Content Include="app\layout\shell.html" />
     <Content Include="app\layout\shell.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -150,6 +161,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaggageController.cs" />
     <Compile Include="Controllers\CountersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassengersController.cs" />

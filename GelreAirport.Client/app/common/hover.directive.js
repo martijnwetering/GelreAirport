@@ -1,7 +1,8 @@
 ﻿(function() {
     "use strict";
 
-    angular.module("app").directive("gaHoverClass", function() {
+    var directiveId = "gaHoverClass";
+    angular.module("app").directive(directiveId, function() {
         return {
             restrict: "A",
             scope: {

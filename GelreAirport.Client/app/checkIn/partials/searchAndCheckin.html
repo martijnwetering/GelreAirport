@@ -1,0 +1,15 @@
+﻿<div data-ng-show="step === 2">
+
+    <div data-ng-show="state === 'searching'">
+        <ga-search data-search="search(searchInput)"></ga-search>
+    </div>
+
+    <div data-ng-show="state === 'select'">
+        <ga-search-result data-passengers="gaPassengers.list"></ga-search-result>
+    </div>
+
+    <div data-ng-show="state === 'checkin'">
+        <ga-checkin-passenger data-passenger="gaPassengers.selectedPassenger"></ga-checkin-passenger>
+    </div>
+
+</div>

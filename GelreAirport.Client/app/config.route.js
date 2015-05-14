@@ -18,7 +18,7 @@
             {
                 url: "/",
                 config: {
-                    templateUrl: "app/checkIn/checkIn.html",
+                    templateUrl: "app/checkIn/main.html",
                     title: "Inchecken"
                 }
             }

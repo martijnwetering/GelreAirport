@@ -1,0 +1,23 @@
+﻿<div data-ng-controller="gaMainController">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error" data-ng-repeat="e in errors" data-ng-show="errors.length > 0">
+                <p>{{ e.message }}</p>
+                    <a class="glyphicon glyphicon-remove icon-remove" data-ng-click="closeError()"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h3>Welkom bij Gelre Airport</h3>
+            <span data-ng-show="gaCounters.selectedCounter !== null">Balie: {{ gaCounters.selectedCounter }}</span>
+            <hr />
+        </div>
+    </div>
+
+    <ga-select-counter data-step="step"></ga-select-counter>
+    <ga-search_and-checkin data-step="step"></ga-search_and-checkin>
+
+</div>

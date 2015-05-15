@@ -20,6 +20,10 @@
 
                     $scope.opened = !$scope.opened;
                 }
+
+                $scope.clearDatePicker = function() {
+                    $scope.searchInput.departureDate = null;
+                }
             }
         }
     });

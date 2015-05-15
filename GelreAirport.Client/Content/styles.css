@@ -2,16 +2,8 @@
     clear: both;
 }
 
-.error {
-    background: indianred;
-    color: white;
+.message {
     position: relative;
-    height: 40px;
-}
-
-.error p {
-    color: white;
-    padding: 7px;
 }
 
 .hover {
@@ -27,7 +19,7 @@
     position: absolute;
     float: right;
     margin-top: 6px;
-    right: 15px;
+    right: 20px;
     color: white;
 }
 

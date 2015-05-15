@@ -1,5 +1,5 @@
 ﻿<div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3" data-ng-show="gaPassengers.list.length > 0">
         <a href="#" data-ng-click="back($event)">Terug naar zoeken</a>
         <table class="table table-striped">
             <thead>
@@ -19,5 +19,12 @@
             </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3" data-ng-hide="gaPassengers.list.length > 0">
+        <a href="#" data-ng-click="back($event)">Terug naar zoeken</a>
+        <p>
+            Helaas geen zoekresultaten.
+        </p>
     </div>
 </div>

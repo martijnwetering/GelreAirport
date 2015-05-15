@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -28,7 +29,7 @@ namespace GelreAirport.Client.Controllers
         [Route("passengers")]
         [HttpGet]
         public IHttpActionResult Passengers(string passengerName = "", int flightNumber = 0, string destination = "", 
-            string airline = "", string departureDate = "", string fields = "")
+            string airline = "", DateTime? departureDate = null, string fields = "")
         {
             try
             {
@@ -39,13 +40,13 @@ namespace GelreAirport.Client.Controllers
                     Destination = destination,
                     Airline = airline
                 };
-                if (!string.IsNullOrWhiteSpace(departureDate))
+                if (departureDate.HasValue)
                 {
-                    searchParams.DepartureDate = DateTime.Parse(departureDate);
+                    searchParams.DepartureDate = departureDate.Value;
                 }
 
                 var passengers = _passengerRepo.FindAll(searchParams);
-                if (passengers == null) return NotFound();
+                if (!passengers.Any()) return NotFound();
 
                 List<string> lstOfFields = new List<string>();
 
@@ -60,6 +61,10 @@ namespace GelreAirport.Client.Controllers
             }
             catch (Exception ex)
             {
+                if (ex is SqlException)
+                {
+                    return BadRequest(ex.Message);
+                }
 
                 return InternalServerError();
             }
@@ -90,8 +95,13 @@ namespace GelreAirport.Client.Controllers
                     return NotFound();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex is SqlException)
+                {
+                    return BadRequest(ex.Message);
+                }
+
                 return InternalServerError();
             }
             
@@ -103,11 +113,15 @@ namespace GelreAirport.Client.Controllers
         {
             try
             {
-                _passengerRepo.CheckIn(passenger);
-                return Ok();
+                var dateTimeUpdated = _passengerRepo.CheckIn(passenger);
+                return Ok(dateTimeUpdated);
             }
             catch (Exception ex)
             {
+                if (ex is SqlException)
+                {
+                    return BadRequest(ex.Message);
+                }
 
                 return BadRequest();
             }

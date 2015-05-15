@@ -35,7 +35,8 @@ namespace GelreAirport.Data.Infrastructure
                             PassengerNumber = (int)reader["passagiernummer"],
                             FlightNumber = (int)reader["vluchtnummer"],
                             Weight = (int)reader["gewicht"],
-                            TimeStamp = (DateTime)reader["ts"]
+                            TimeStamp = (DateTime)reader["ts"],
+                            Id = (int)reader["volgnummer"]
                         };
                         baggage.Add(item);
                     }
@@ -43,6 +44,34 @@ namespace GelreAirport.Data.Infrastructure
             }
 
             return baggage;
-        } 
+        }
+
+        public void CheckInBaggageItem(BaggageItem item, int passengerNumber, int flightNumber)
+        {
+            if (item.Weight == 0) throw new ArgumentException();
+
+            using (var command = Context.CreateCommand())
+            {
+                command.CommandText = "procAddObject";
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@passagiernummer", SqlDbType.Int).Value = passengerNumber;
+                command.Parameters.Add("@vluchtnummer", SqlDbType.Int).Value = flightNumber;
+                command.Parameters.Add("@gewicht", SqlDbType.Int).Value = item.Weight;
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void RemoveBaggageItem(int id)
+        {
+            using (var command = Context.CreateCommand())
+            {
+                command.CommandText = "DELETE [Object] WHERE volgnummer = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

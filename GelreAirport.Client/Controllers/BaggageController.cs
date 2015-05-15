@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Contexts;
 using System.Web.Http;
 using GelreAirport.Data.Infrastructure;
 using GelreAirport.Data.Models;
+using Newtonsoft.Json;
 
 namespace GelreAirport.Client.Controllers
 {
@@ -41,6 +45,42 @@ namespace GelreAirport.Client.Controllers
             {
                 
                 return InternalServerError();
+            }
+        }
+
+        [Route("baggage/{passengerNumber:int}/{flightNumber:int}/checkin")]
+        [HttpPost]
+        public IHttpActionResult CheckInBaggage([FromBody]BaggageItem item, [FromUri]int passengerNumber, [FromUri]int flightNumber )
+        {
+            try
+            {
+                _baggageRepo.CheckInBaggageItem(item, passengerNumber, flightNumber);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                if (ex is SqlException)
+                {
+                    return BadRequest(ex.Message);
+                }   
+
+                return InternalServerError();
+            }
+        }
+
+        [Route("baggage/{passengerNumber:int}/{flightNumber:int}/{id:int}")]
+        [HttpDelete]
+        public IHttpActionResult RemoveBaggage(int passengerNumber, int flightNumber, int id)
+        {
+            try
+            {
+                _baggageRepo.RemoveBaggageItem(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
             }
         }
     }

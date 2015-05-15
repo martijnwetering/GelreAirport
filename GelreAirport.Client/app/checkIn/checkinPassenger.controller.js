@@ -18,5 +18,12 @@
             $scope.opened = !$scope.opened;
         }
 
+        $scope.addBaggage = function(baggage) {
+            gaPassengers.addBaggage(baggage)
+                .success(function() {
+                    $scope.baggage.weight = "";
+                });
+        }
+
     }
 }())

@@ -17,6 +17,11 @@
                     $event.preventDefault();
                     ctrl.setState("select");
                 }
+
+                scope.backToSearch = function($event) {
+                    $event.preventDefault();
+                    ctrl.setState("searching");
+                }
             }
         }
     });
